@@ -115,6 +115,60 @@ function testRestart(num, done) {
     return () => ticks = max_ticks + 1
 }
 
+function testToggle(num, done) {
+    const script = 'while true; do sleep 0.01; echo "example"; done'
+    const p = new Pipe('bash', '-c', script)
+    let cancel = null
+    let n = 0, source = null
+
+    function onResult(line) {
+        print('toggle', n, line)
+    }
+
+    function onExit(ok) { 
+        if (ok) log(`pipe ${script} stopped`)
+        else    logError(new Error(`pipe ${script} failed, see logs for details`))
+    }
+
+    function toggle() {
+        if (cancel) { cancel(); cancel = null }
+        else        { n++; cancel = p.start(onResult, onExit) }
+    }
+
+    // toggleBtn.connect('toggled', (btn) => toggle())
+
+    toggle()                // turn on now
+    setTimeout(toggle, 50)  // turn off later
+    setTimeout(toggle, 100) // turn on later
+    setTimeout(toggle, 150) // turn off later
+
+    function kill() {
+        // TODO: check pipe status and return a real test result!
+        if (cancel) cancel()
+        done(num, true)
+    }
+
+    setTimeout(kill,  200) 
+    return kill
+}
+
+function testCommand(num, done) {
+    let p = new Pipe('bash', '-c', 'echo 1')
+    let line = null
+    let err  = null
+    cancel = p.start((l) => line = l, (ok) => {
+        if (!ok)         err = new Error(`command test failed`)
+        if (line != '1') err = new Error(`command test bad result line=${line} expected '1'`)        
+        if (err == null) {
+            log('command test OK')
+            done(num, true)
+        } else {
+            logError(err)
+            done(num, false)
+        }        
+    })
+    return cancel
+}
 
 let loop = GLib.MainLoop.new(null, false)
 let finished = []
@@ -132,6 +186,8 @@ let done = (num, ok) => {
 let hooks = [
     testPipes(1, done),
     testRestart(2, done),
+    testToggle(3, done),
+    testCommand(4, done),
 ]
 
 loop.run()
