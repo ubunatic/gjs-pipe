@@ -1,0 +1,29 @@
+{
+  "name": "gjspipe",
+  "version": "1.0.0",
+  "description": "Gio.Subprocess convenience wrapper",
+  "main": "lib/gjspipe/pipe.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubunatic/gjs-pipe.git"
+  },
+  "keywords": [
+    "gjs",
+    "gio",
+    "subprocess",
+    "Gnome"
+  ],
+  "author": "Uwe Jugel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ubunatic/gjs-pipe/issues"
+  },
+  "homepage": "https://github.com/ubunatic/gjs-pipe#readme"
+}

@@ -1,0 +1,61 @@
+{
+    "meta": {
+        "comment": [
+            "This output from `sudo intel_gpu_top -J`.",
+            "GjsPipe was originally developed for getting this data into a Gnome Extension.",
+            "Also see https://github.com/ubunatic/gnome-intel-gpu-indicator"
+        ]
+    },
+    "period": {
+        "duration": 0.006302,
+        "unit": "ms"
+    },
+    "frequency": {
+        "requested": 0.000000,
+        "actual": 0.000000,
+        "unit": "MHz"
+    },
+    "interrupts": {
+        "count": 0.000000,
+        "unit": "irq/s"
+    },
+    "rc6": {
+        "value": 89.955570,
+        "unit": "%"
+    },
+    "power": {
+        "value": 0.000000,
+        "unit": "W"
+    },
+    "imc-bandwidth": {
+        "reads": 6304.964570,
+        "writes": 871.654088,
+        "unit": "MiB/s"
+    },
+    "engines": {
+        "Render/3D/0": {
+            "busy": 0.000000,
+            "sema": 0.000000,
+            "wait": 0.000000,
+            "unit": "%"
+        },
+        "Blitter/0": {
+            "busy": 0.000000,
+            "sema": 0.000000,
+            "wait": 0.000000,
+            "unit": "%"
+        },
+        "Video/0": {
+            "busy": 0.000000,
+            "sema": 0.000000,
+            "wait": 0.000000,
+            "unit": "%"
+        },
+        "VideoEnhance/0": {
+            "busy": 0.000000,
+            "sema": 0.000000,
+            "wait": 0.000000,
+            "unit": "%"
+        }
+    }
+}
