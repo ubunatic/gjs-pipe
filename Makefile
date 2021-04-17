@@ -14,5 +14,6 @@ help:
 reuse: ; reuse lint
 test: $(TESTS)
 
+TEST_ARGS=
 $(TESTS): $(SRC)
-	gjs -I $(CURDIR)/lib $@
+	gjs -I $(CURDIR)/lib $@ $(TEST_ARGS)

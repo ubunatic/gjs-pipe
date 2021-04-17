@@ -1,6 +1,6 @@
 {
   "name": "gjspipe",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Gio.Subprocess convenience wrapper",
   "main": "lib/gjspipe/pipe.js",
   "directories": {
@@ -17,8 +17,15 @@
   "keywords": [
     "gjs",
     "gio",
+    "Gio",
+    "glib",
+    "GLib",
     "subprocess",
-    "Gnome"
+    "Gnome",
+    "async",
+    "Promise",
+    "pipes",
+    "polyfill"
   ],
   "author": "Uwe Jugel",
   "license": "MIT",
