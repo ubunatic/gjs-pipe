@@ -1,0 +1,38 @@
+<svg width="38.306mm" height="20.376mm" version="1.1" viewBox="0 0 38.306 20.376" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-287.76 -156.12)" fill-rule="evenodd">
+  <rect x="287.76" y="156.12" width="38.306" height="20.376" rx=".82202" ry=".82202" fill="#7491e3" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".031244"/>
+  <g transform="translate(258.58 -28.461)" fill="#fff">
+   <rect x="44.288" y="198.96" width="1.7659" height="3.6008" stop-color="#000000"/>
+   <rect x="45.454" y="199.49" width="7.8497" height="2.5381" stop-color="#000000"/>
+   <rect transform="scale(1,-1)" x="51.293" y="-202.02" width="2.3112" height="14.709" stop-color="#000000"/>
+   <rect x="61.479" y="186.73" width="1.7659" height="3.6008" stop-color="#000000"/>
+   <rect x="53.16" y="187.31" width="9.7056" height="2.5381" stop-color="#000000"/>
+  </g>
+  <g transform="translate(258.31 -60.211)" fill="#fff">
+   <g shape-rendering="auto">
+    <path d="m56.184 225.53h3.3658v-1.7131h-3.3658m-1.6024-1.5702h6.4889v4.9604h-4.9394v7.0752h-1.5495z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+    <path d="m63.454 230.42h0.84219v1.3315h-0.88551v1.0314h1.5016v1.4998h-3.1518v-6.3308h3.1518v1.5441h-1.4582" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+    <path d="m58.505 230.8h1.043v-1.3008h-1.043m-1.6024-1.5507h4.166v4.5481h-2.6165v1.7826h-1.5495z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   </g>
+   <g transform="matrix(.91059 0 0 1.0626 11.012 49.531)">
+    <path d="m55.732 164.81h1.9006v2.4028h-1.9006z" stop-color="#000000"/>
+    <path d="m55.732 162.92h1.9006v1.3109h-1.9006z" stop-color="#000000"/>
+   </g>
+  </g>
+  <g transform="translate(258.58 -28.461)" fill="#fff">
+   <path d="m50.317 197.37v-6.0963h-3.8983v-1.4575h3.8983v-2.4534h-6.0294v6.1206h3.8983v1.5192h-3.8983v2.3674z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stop-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   <rect x="48.551" y="186.83" width="1.7659" height="3.6008" stop-color="#000000"/>
+   <rect x="44.288" y="194.3" width="1.7659" height="3.6008" stop-color="#000000"/>
+  </g>
+  <g transform="translate(257.78 -28.461)" fill="#fff">
+   <path d="m37.308 192.18v2.4371h-2.3321v-4.8863h4.638v-2.3674h-7.1559v9.7071h7.1559v-4.865z" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".11915"/>
+   <rect x="37.893" y="186.83" width="1.7659" height="3.6008" stop-color="#000000"/>
+   <rect transform="rotate(90)" x="192.04" y="-40.196" width="1.7659" height="3.6008" stop-color="#000000"/>
+  </g>
+  <g transform="translate(258.26 -28.461)" fill="#fff">
+   <path d="m38.553 198.95v1.3453h2.1184v-13.466h2.5578v15.697h-6.9788v-3.5765z" stop-color="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".11915"/>
+   <rect transform="rotate(90)" x="186.83" y="-43.759" width="1.7659" height="3.6008" stop-color="#000000"/>
+   <rect transform="rotate(90)" x="197.89" y="-39.139" width="1.7659" height="3.6008" stop-color="#000000"/>
+  </g>
+ </g>
+</svg>
