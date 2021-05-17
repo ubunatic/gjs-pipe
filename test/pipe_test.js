@@ -2,22 +2,21 @@
 gi = imports.gi
 const { Gio, GLib } = gi
 
-const { Pipe, AGG_JSON, setTimeout, clearTimeout } = imports.gjspipe.pipe
+/** @type {import('../lib/gjspipe/pipe.js')} */
+const { Pipe, AGG, setTimeout, clearTimeout } = imports.gjspipe.pipe
 
-let program = imports.system.programInvocationName
-let here = GLib.path_get_dirname(program)
-
+let prog = imports.system.programInvocationName
+let here = GLib.path_get_dirname(prog)
 let bash = ['bash', '-o', 'errexit', '-o', 'pipefail', '-c']
+const Seconds = 1e6
 
 function testPipes(num, done) {
-    const Seconds = 1e6
-
     let ticks = 0
     let max_ticks = 1000
 
     let gpu_top = `for i in $(seq 100); do cat ${here}/intel_gpu_top.json; done`
     let script  = `for i in 1 2 3; do echo $i; done`  // sleep required to get output before exit
-    let pipe1   = new Pipe(...bash, gpu_top).configure({agg_type: AGG_JSON})
+    let pipe1   = new Pipe(...bash, gpu_top).configure({agg_type: AGG.JSON})
     let pipe2   = new Pipe(...bash, script)
 
     pipe1.verbose = true
@@ -44,10 +43,10 @@ function testPipes(num, done) {
     let tick = () => {
         // check whether to stop on error or continue processing
         if (ticks++ > max_ticks) return quit(new Error('pipes did not produce enough data'))
-        if (res.length < 10)     return setTimeout(tick, 10)
-        if (num_lines < 3)       return setTimeout(tick, 10)
+        if (res.length < 10)     return setTimeout(tick, 10)  // wait for pipe1
+        if (num_lines < 3)       return setTimeout(tick, 10)  // wait for pipe2
 
-        log(`got ${res.length} results after ${ticks} ticks`)
+        log(`got ${res.length} results and ${num_lines} lines after ${ticks} ticks`)
         if (!res[0].power)      return quit(new Error('gpu top has no power stats'))
         if (!res[0].power.unit) return quit(new Error('gpu top has no power unit'))
         if (!res[0].engines)    return quit(new Error('gpu top has no engines'))
@@ -67,8 +66,7 @@ function testPipes(num, done) {
     return cancel
 }
 
-function testRestart(num, done) {    
-    const Seconds = 1e6
+function testRestart(num, done) {
     let ticks = 0
     let max_ticks = 1000
     let max_runs = 10
@@ -104,7 +102,7 @@ function testRestart(num, done) {
         tick()
     }
 
-    let tick = () => {        
+    let tick = () => {
         if (ticks++ > max_ticks) return quit(new Error('script did not produce enough data'))
         if (res.length < 2)      return setTimeout(tick, 10)
         if (runs > max_runs)     return quit()
@@ -112,7 +110,8 @@ function testRestart(num, done) {
     }
     tick()
 
-    return () => ticks = max_ticks + 1
+    let kill = () => { ticks = max_ticks + 1; cancel() }
+    return kill
 }
 
 function testToggle(num, done) {
@@ -125,7 +124,7 @@ function testToggle(num, done) {
         print('toggle', n, line)
     }
 
-    function onExit(ok) { 
+    function onExit(ok) {
         if (ok) log(`pipe ${script} stopped`)
         else    logError(new Error(`pipe ${script} failed, see logs for details`))
     }
@@ -134,8 +133,6 @@ function testToggle(num, done) {
         if (cancel) { cancel(); cancel = null }
         else        { n++; cancel = p.start(onResult, onExit) }
     }
-
-    // toggleBtn.connect('toggled', (btn) => toggle())
 
     toggle()                // turn on now
     setTimeout(toggle, 50)  // turn off later
@@ -148,7 +145,7 @@ function testToggle(num, done) {
         done(num, true)
     }
 
-    setTimeout(kill,  200) 
+    setTimeout(kill, 200)
     return kill
 }
 
@@ -158,14 +155,14 @@ function testCommand(num, done) {
     let err  = null
     cancel = p.start((l) => line = l, (ok) => {
         if (!ok)         err = new Error(`command test failed`)
-        if (line != '1') err = new Error(`command test bad result line=${line} expected '1'`)        
+        if (line != '1') err = new Error(`command test bad result line=${line} expected '1'`)
         if (err == null) {
             log('command test OK')
             done(num, true)
         } else {
             logError(err)
             done(num, false)
-        }        
+        }
     })
     return cancel
 }

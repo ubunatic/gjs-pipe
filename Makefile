@@ -1,7 +1,7 @@
-.PHONY: test all reuse
-
 TESTS=$(wildcard test/*.js)
 SRC=$(wildcard lib/*/*.js)
+
+.PHONY: $(TESTS) test all reuse
 
 all: reuse test
 

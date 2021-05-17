@@ -1,6 +1,6 @@
 {
   "name": "gjspipe",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Gio.Subprocess convenience wrapper",
   "main": "lib/gjspipe/pipe.js",
   "directories": {

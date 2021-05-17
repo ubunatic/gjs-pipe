@@ -1,12 +1,8 @@
 
 const { Gio, GLib } = imports.gi
 
-const { makeAsync, glibAsync, asyncTimeout } = imports.gjspipe.pipe
-
-const isCancelled = (err) => (
-    err instanceof Gio.IOErrorEnum &&
-    err.code == Gio.IOErrorEnum.CANCELLED
-)
+/** @type {import('../lib/gjspipe/pipe.js')} */
+const { makeAsync, glibAsync, asyncTimeout, isCancelled } = imports.gjspipe.pipe
 
 let launcher = new Gio.SubprocessLauncher({
     flags: (
@@ -81,7 +77,7 @@ async function testScript(ctx, name, script, timeout_ms=300) {
                 )
                 if (line == null) break
                 if (show_output) print('read', name, 'line:', i++, line)
-            } catch (e) {                
+            } catch (e) {
                 if (!isCancelled(e)) read_error = e
                 break
             }
@@ -117,7 +113,7 @@ async function runTests() {
         ma2:   await makeAsync(() => 1, 100),
     }
     const expect = {
-        loop:  { cancel_requested:true, terminated:true, finish_ok:true },        
+        loop:  { cancel_requested:true, terminated:true, finish_ok:true },
         error: { cancel_requested:false, terminated:true, finish_ok:false },
         cmd:   { cancel_requested:false, terminated:true, finish_ok:true },
         ma1: 1,
@@ -139,10 +135,10 @@ async function runTests() {
 
 runTests()
 .then(() => loop.quit())
-.catch((e) => { loop.quit(); throw e })
+.catch((e) => { errors.push(e); loop.quit() })
 
 loop.run()
 if (errors.length > 0) {
     log(`${errors.length} test(s) failed: "${errors.join('", "')}"`)
-    imports.system.exit(1)    
+    imports.system.exit(1)
 }

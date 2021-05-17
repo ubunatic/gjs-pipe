@@ -2,14 +2,15 @@
 gi = imports.gi
 const { Gio, GLib } = gi
 
-const { Pipe, AGG_JSON, setTimeout, clearTimeout, asyncTimeout } = imports.gjspipe.pipe
+/** @type {import('../lib/gjspipe/pipe.js')} */
+const { Pipe, AGG, setTimeout, clearTimeout, asyncTimeout } = imports.gjspipe.pipe
 
-let program = imports.system.programInvocationName
-let here = GLib.path_get_dirname(program)
-
+let prog = imports.system.programInvocationName
+let here = GLib.path_get_dirname(prog)
 let loop = GLib.MainLoop.new(null, false)
 let finished = []
-let err = null
+let errors = []
+function error(e) { errors.push(e) }
 
 function OK() {
     return 'OK'
@@ -20,20 +21,24 @@ function Throw() {
 }
 
 async function runTests() {
+    log(`run tests`)
     let v1 = await asyncTimeout(OK)
-    if (v1 != 'OK') err = new Error('bad promise result 1')
+    if (v1 != 'OK') error(new Error('bad promise result 1'))
     let v2 = await asyncTimeout(OK)
-    if (v2 != 'OK') err = new Error('bad promise result 2')
+    if (v2 != 'OK') error(new Error('bad promise result 2'))
     log(`await tests OK`)
 
     let thrown = null
     try { await asyncTimeout(Throw) }
     catch (e) { thrown = e }
-    if (thrown == null) err = new Error('missing promise error')
+    if (thrown == null) error( new Error('missing promise error'))
     log(`error tests OK`)
 }
 
 runTests().then(() => loop.quit())
 
 loop.run()
-if (err) throw err
+if (errors.length > 0) {
+    errors.map(logError)
+    throw new Error(`async tests failed`)
+}
